@@ -60,10 +60,14 @@ metamath_template = (
     )
 question = "문제: Jimmy는 Ethel이 가진 돈의 두배보다 2달러가 더 많습니다. Ethel이 8달러가 있다고하면, Jimmy는 얼마를 갖고 있나요?  정답: "
 prefix =  metamath_template.format(instruction=question)
-model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
+output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
+print(output)
 ```
 ```
-['If Ethel has 8 dollars, then Jimmy has 2 * 8 + 2 = 18 dollars.\nTherefore, Jimmy has 18 dollars.\n#### 18\nThe answer is: 18']
+If Ethel has 8 dollars, then Jimmy has 2 * 8 + 2 = 18 dollars.
+Therefore, Jimmy has 18 dollars.
+#### 18
+The answer is: 18
 ```
 
 Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template.
