@@ -9,21 +9,22 @@ Paper link: https://arxiv.org/abs/2401.10695
 
 
 ##  🤗Models
+### Llama 2
+- [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
 ### Llemma
 - [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
 ### MetaMath
 - [metamath-langbridge-9b](https://huggingface.co/kaist-ai/metamath-langbridge-9b)
 - [metamath-langbridge-15b](https://huggingface.co/kaist-ai/metamath-langbridge-15b)
-- metamath-langbridge-20b (uploading)
+- [metamath-langbridge-20b](https://huggingface.co/kaist-ai/metamath-langbridge-20b)
 ### Code Llama
 - [codellama-langbridge-9b](https://huggingface.co/kaist-ai/codellama-langbridge-9b)
 - [codellama-langbridge-15b](https://huggingface.co/kaist-ai/codellama-langbridge-15b)
-- codellama-langbridge-20b (uploading)
+- [codellama-langbridge-20b](https://huggingface.co/kaist-ai/codellama-langbridge-20b)
 ### Orca 2
-- [codellama-orac2-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
-- [codellama-orca2-15b](https://huggingface.co/kaist-ai/codellama-langbridge-15b)
-- codellama-orca2-20b(uploading)
-
+- [orca2-langbridge-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
+- [orca2-langbridge-15b](https://huggingface.co/kaist-ai/orca2-langbridge-15b)
+- [orca2-langbridge-20b](https://huggingface.co/kaist-ai/orca2-langbridge-20b)
 
 ## Install
 ### Using the Models only
@@ -65,7 +66,8 @@ model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
 ['If Ethel has 8 dollars, then Jimmy has 2 * 8 + 2 = 18 dollars.\nTherefore, Jimmy has 18 dollars.\n#### 18\nThe answer is: 18']
 ```
 
-Prompt models as if you were using the original LMs. For example, for Orca 2-langbridge use the Orca 2 template.
+Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template.
+For pretrained models (Llama 2, Llemma, and Code Llama), you may need to do use few-shot learning.
 
 ### Training Example
 ```
