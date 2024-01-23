@@ -79,7 +79,7 @@ The answer is: 18
 ```
 #### Tips
 1. Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template. For pretrained models (Llama 2, Llemma, and Code Llama), you may need to use few-shot examples.
-2. The encoder tokenizer is simply an [mT5 tokenizer with whitespaces as special tokens](https://github.com/kaistAI/LangBridge/blob/16a781b1048dcc0089c986fd4bd63ab75c6a7d13/python_scripts/train_langbridge.py#L331). The reason for the added whitespaces is explained in section D.1 of the paper.
+2. The encoder tokenizer is simply an [mT5 tokenizer with whitespace tokens](https://github.com/kaistAI/LangBridge/blob/16a781b1048dcc0089c986fd4bd63ab75c6a7d13/python_scripts/train_langbridge.py#L331). The reason for the added whitespaces is explained in section D.1 of the paper.
 
 ### Training Example
 ```
