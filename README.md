@@ -70,8 +70,10 @@ Therefore, Jimmy has 18 dollars.
 The answer is: 18
 ```
 
-Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template.
-For pretrained models (Llama 2, Llemma, and Code Llama), you may need to do use few-shot learning.
+
+Set the prefixes as if you were prompting the original LMs. 
+For example, for Orca 2-langbridge use the Orca 2 template.
+For pretrained models (Llama 2, Llemma, and Code Llama), you may need to use few-shot learning.
 
 ### Training Example
 ```
