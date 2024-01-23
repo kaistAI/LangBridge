@@ -1,11 +1,17 @@
 # LangBridge
 Repository for the paper "LANGBRIDGE: Multilingual Reasoning Without Multilingual Supervision".
+Paper link: https://arxiv.org/abs/2401.10695
+
+# TL;DR
+🤔LMs good at reasoning are mostly English-centric (MetaMath, Orca 2, etc).
+
+😃Let’s adapt them to solve multilingual tasks. BUT without using multilingual data!
+
+LangBridge “bridges” mT5 encoder and the target LM together while utilizing only English data. In test time, LangBridge models can solve multilingual reasoning tasks effectively.
 
 <p align="center">
   <img src="./figure2.png" >
 </p>
-
-Paper link: https://arxiv.org/abs/2401.10695
 
 
 ##  🤗Models
