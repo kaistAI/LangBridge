@@ -77,21 +77,18 @@ Therefore, Jimmy has 18 dollars.
 #### 18
 The answer is: 18
 ```
-
-
-Set the prefixes as if you were prompting the original LMs. 
-
-For example, for Orca 2-langbridge use the Orca 2 template.
-
-For pretrained models (Llama 2, Llemma, and Code Llama), you may need to use few-shot learning.
+#### Tips
+1. Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template. For pretrained models (Llama 2, Llemma, and Code Llama), you may need to use few-shot examples.
+2. The encoder tokenizer is simply an [mT5 tokenizer with whitespaces as special tokens](https://github.com/kaistAI/LangBridge/blob/16a781b1048dcc0089c986fd4bd63ab75c6a7d13/python_scripts/train_langbridge.py#L331). The reason for the added whitespaces is explained in section D.1 of the paper.
 
 ### Training Example
 ```
 cd python_scripts
 bash scripts/train_lb/metamath.sh
 ```
-- For optimal performance, keep `freeze_encoder=False` for pretrained LMs (trained on unlabeled corpora), and `freeze_encoder=True` for finetuned LMs (trained on labeled corpora). This is explained in section D.1 of the paper.
-- The training and validation data should have two columns: `input` and `output`. The `output` should be empty for unlabeled corpora. The code will dynamically split the input and label based on the `input` column alone. See the last sentence of Section 4.1.
+#### Tips
+1. For optimal performance, keep `freeze_encoder=False` for pretrained LMs (trained on unlabeled corpora), and `freeze_encoder=True` for finetuned LMs (trained on labeled corpora). This is explained in section D.1 of the paper.
+2. The training and validation data should have two columns: `input` and `output`. The `output` should be empty for unlabeled corpora. The code will dynamically split the input and label based on the `input` column alone. See the last sentence of Section 4.1.
 
 ### Evaluation Example
 ```
@@ -101,4 +98,4 @@ bash scripts/eval/mgsm/metamath-lb-9b.sh
 
 
 ## Limitation
-LangBridge mostly helps for low-resource languages. If the language model is already proficient in a certain language, adapting it with LangBridge may result in lower performance. Please refer to the paper for the detailed evaluation results.
+LangBridge mostly helps for low-resource languages. If the language model is already proficient in a certain language, LangBridge may lower performance in that language. Please refer to the paper for the detailed evaluation results.
