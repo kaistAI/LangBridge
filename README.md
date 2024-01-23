@@ -88,7 +88,7 @@ bash scripts/train_lb/metamath.sh
 ```
 #### Tips
 1. For optimal performance, keep `freeze_encoder=False` for pretrained LMs (trained on unlabeled corpora), and `freeze_encoder=True` for finetuned LMs (trained on labeled corpora). This is explained in section D.1 of the paper.
-2. The training and validation data should have two columns: `input` and `output`. The `output` should be empty for unlabeled corpora. The code will dynamically split the input and label based on the `input` column alone. See the last sentence of Section 4.1.
+2. The training and validation data should have two columns: `input` and `output`. The `output` should be empty for unlabeled corpora. The code will dynamically create label based on the `input` column if the `output` is empty. See the last sentence of Section 4.1.
 
 ### Evaluation Example
 ```
