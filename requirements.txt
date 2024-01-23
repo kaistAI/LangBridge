@@ -1,0 +1,11 @@
+datasets
+deepspeed
+einops
+einops-exts
+huggingface-hub
+pandas
+pytorch-lightning
+sentencepiece
+torchinfo
+transformers
+wandb
