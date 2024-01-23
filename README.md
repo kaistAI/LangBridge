@@ -2,7 +2,7 @@
 Repository for the paper "LANGBRIDGE: Multilingual Reasoning Without Multilingual Supervision".
 
 <p align="center">
-  <img src="./figure2.png" width="60%" >
+  <img src="./figure2.png" width="80%" >
 </p>
 
 Paper link: https://arxiv.org/abs/2401.10695
