@@ -1,10 +1,9 @@
 # LangBridge
 Repository for the paper "LangBridge: Multilingual Reasoning Without Multilingual Supervision".
 
-#### Links
-[Paper](https://arxiv.org/abs/2401.10695)
-
-[Tweet (brief overview of the paper)](https://twitter.com/dongkeun_yoon/status/1749780849741160775)
+### Links
+- [Paper](https://arxiv.org/abs/2401.10695)
+- [Tweet (brief overview of the paper)](https://twitter.com/dongkeun_yoon/status/1749780849741160775)
 
 # TL;DR
 🤔LMs good at reasoning are mostly English-centric (MetaMath, Orca 2, etc).
