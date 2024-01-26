@@ -8,7 +8,7 @@ python eval_langbridge.py \
   --tasks mgsm_en,mgsm_es,mgsm_fr,mgsm_de,mgsm_ru,mgsm_zh,mgsm_ja,mgsm_th,mgsm_sw,mgsm_bn,mgsm_te\
   --instruction_template metamath \
   --batch_size 1 \
-  --output_path eval_outputs/mgsm/llemma-langbrige_9b \
+  --output_path eval_outputs/mgsm/metamath-langbrige_9b \
   --device cuda:0 \
   --no_cache
 
