@@ -41,7 +41,7 @@ class LBBaseModel(ABC, PreTrainedModel):
 
     config_class = LangBridgeConfig
 
-    def __init__(self, config: LangBridgeConfig, suppress_warnings=True):
+    def __init__(self, config: LangBridgeConfig, random_init=True, suppress_warnings=True):
         super().__init__(config)
         if 'umt5' in config.enc.lower():
             enc_class = UMT5EncoderModel
@@ -51,9 +51,13 @@ class LBBaseModel(ABC, PreTrainedModel):
             enc_class = AutoModel
 
         with suppress_model_loading_warnings(suppress_warnings):
-            enc_config = AutoConfig.from_pretrained(
-                config.enc)
-            self.enc = enc_class(config=enc_config)
+            if random_init:
+                enc_config = AutoConfig.from_pretrained(
+                    config.enc)
+                self.enc = enc_class(config=enc_config)
+            else:
+                print('loading encoder from pretrained')
+                self.enc = enc_class.from_pretrained(config.enc)
 
         # self.enc.gradient_checkpointing_enable(
             # gradient_checkpointing_kwargs={'use_reentrant': False})
@@ -210,12 +214,17 @@ class LBBaseModel(ABC, PreTrainedModel):
 class LBOPT(LBBaseModel):
     config: LangBridgeConfig
 
-    def __init__(self, config: LangBridgeConfig):
+    def __init__(self, config: LangBridgeConfig, random_init=True):
         from transformers import OPTForCausalLM, OPTModel
-        super().__init__(config)
+        super().__init__(config, random_init=random_init)
 
-        model_config = AutoConfig.from_pretrained(config.lm)
-        base_lm: OPTForCausalLM = OPTForCausalLM(config=model_config)
+        if random_init:
+            model_config = AutoConfig.from_pretrained(config.lm)
+            base_lm: OPTForCausalLM = OPTForCausalLM(config=model_config)
+        else:
+            print('loading lm from pretrained')
+            base_lm: OPTForCausalLM = OPTForCausalLM.from_pretrained(
+                config.lm)
         assert self.config.dim_lm == base_lm.config.hidden_size, \
             f"specified {self.config.dim_lm=} in LangBridgeConfig, but {config.lm} has hidden size={base_lm.config.hidden_size}"
 
@@ -227,18 +236,29 @@ class LBOPT(LBBaseModel):
 class LBLlama(LBBaseModel):
     config: LangBridgeConfig
 
-    def __init__(self, config: LangBridgeConfig):
+    def __init__(self, config: LangBridgeConfig, random_init=True):
         from transformers import LlamaForCausalLM, LlamaModel
-        super().__init__(config)
+        super().__init__(config, random_init=random_init)
 
-        try:
+        if random_init:
             model_config = AutoConfig.from_pretrained(config.lm)
-            model_config.attn_implementation = 'flash_attention_2'
-            base_lm: LlamaForCausalLM = LlamaForCausalLM(config=model_config)
-        except ImportError:
-            print('Not using Flash Attention!')
-            model_config = AutoConfig.from_pretrained(config.lm)
-            base_lm: LlamaForCausalLM = LlamaForCausalLM(config=model_config)
+            try:
+                model_config.attn_implementation = 'flash_attention_2'
+                base_lm: LlamaForCausalLM = LlamaForCausalLM(
+                    config=model_config)
+            except ImportError:
+                print('Not using Flash Attention!')
+                base_lm: LlamaForCausalLM = LlamaForCausalLM(
+                    config=model_config)
+        else:
+            print('loading lm from pretrained')
+            try:
+                base_lm: LlamaForCausalLM = LlamaForCausalLM.from_pretrained(
+                    config.lm, use_flash_attention_2=True)
+            except ImportError:
+                print('Not using Flash Attention!')
+                base_lm: LlamaForCausalLM = LlamaForCausalLM.from_pretrained(
+                    config.lm)
 
         assert self.config.dim_lm == base_lm.config.hidden_size, \
             f"specified {self.config.dim_lm=} in LangBridgeConfig, but {config.lm} has hidden size={base_lm.config.hidden_size}"
@@ -251,18 +271,28 @@ class LBLlama(LBBaseModel):
 class LBMistral(LBBaseModel):
     config: LangBridgeConfig
 
-    def __init__(self, config: LangBridgeConfig):
+    def __init__(self, config: LangBridgeConfig, random_init=True):
         from transformers import MistralForCausalLM, MistralModel
-        super().__init__(config)
+        super().__init__(config, random_init=random_init)
 
-        model_config = AutoConfig.from_pretrained(config.lm)
-        try:
-            base_lm: MistralForCausalLM = MistralForCausalLM(
-                config=model_config, use_flash_attention_2=True)
-        except ImportError:
-            print('Not using Flash Attention!')
-            base_lm: MistralForCausalLM = MistralForCausalLM(
-                config=model_config)
+        if random_init:
+            model_config = AutoConfig.from_pretrained(config.lm)
+            try:
+                model_config.attn_implementation = 'flash_attention_2'
+                base_lm: MistralForCausalLM = MistralForCausalLM(
+                    config=model_config)
+            except ImportError:
+                print('Not using Flash Attention!')
+                base_lm: MistralForCausalLM = MistralForCausalLM(
+                    config=model_config)
+        else:
+            try:
+                base_lm: MistralForCausalLM = MistralForCausalLM.from_pretrained(
+                    config.lm, use_flash_attention_2=True)
+            except ImportError:
+                print('Not using Flash Attention!')
+                base_lm: MistralForCausalLM = MistralForCausalLM.from_pretrained(
+                    config.lm)
         assert self.config.dim_lm == base_lm.config.hidden_size, \
             f"specified {self.config.dim_lm=} in LangBridgeConfig, but {config.lm} has hidden size={base_lm.config.hidden_size}"
 
@@ -281,15 +311,16 @@ class LangBridgeModel(PreTrainedModel):
         'codellama/CodeLlama': LBLlama,
         'microsoft/Orca-2': LBLlama,
         'meta-math/MetaMath': LBLlama,
+        'meta-llama/Llama-2-7b-hf': LBLlama,
         'mistralai/Mistral-7B-v0.1': LBMistral,
     }
 
-    def __init__(self, config: LangBridgeConfig, model_class: type | None = None):
+    def __init__(self, config: LangBridgeConfig, random_init=True, model_class=None):
         super().__init__(config)
 
         if model_class is None:
             model_class = self._find_lm_class(config.lm)
-        self.lb: LBBaseModel = model_class(config)
+        self.lb: LBBaseModel = model_class(config, random_init=random_init)
 
         if config.freeze_language_model:
             self.freeze_lm()

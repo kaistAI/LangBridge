@@ -325,7 +325,7 @@ if __name__ == '__main__':
         if training_args.eval_only:
             logger.warning('Evaluating an un-aligned model!')
 
-        model = model_class(config)
+        model = model_class(config, random_init=False)
 
     # this is true for all our experiments, explained in section D.1
     if training_args.add_new_lines_to_enc:
