@@ -1,3 +1,5 @@
+# code adapted from flamingo-mini https://github.com/dhansmair/flamingo-mini
+
 from __future__ import annotations
 from abc import ABC
 from typing import Any, Dict
