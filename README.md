@@ -79,6 +79,14 @@ The answer is: 18
 ```
 #### Orca2-LangBridge
 ```python
+from transformers import AutoTokenizer
+from langbridge import LangBridgeModel
+
+# our pretrained langbridge models all leverage this encoder tokenizer
+enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
+lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
+model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda:2')
+
 system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
 user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?"
 
