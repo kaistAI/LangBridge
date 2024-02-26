@@ -65,7 +65,7 @@ user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was th
 
 prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
 prefix = prompt.format(system_message=system_message, user_message=user_message)
-output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
+output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix, max_length=150)
 print(output)
 ```
 
