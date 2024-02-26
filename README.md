@@ -79,17 +79,8 @@ The answer is: 18
 ```
 #### Orca2-LangBridge
 ```python
-from transformers import AutoTokenizer
-from langbridge import LangBridgeModel
-
-# our pretrained langbridge models all leverage this encoder tokenizer
-enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
-lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
-model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
-
-
 system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
-user_message = "объясни мне слово друг"
+user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?"
 
 prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
 prefix =  prompt.format(system_message=system_message, user_message=user_message)
@@ -98,7 +89,7 @@ print(output)
 ```
 
 ```
-The word "friend" is a term used to describe a close, personal relationship between two or more individuals. It is derived from the Old English word "frēond," which means "friend" or "ally." The concept of friendship has been present in human societies throughout history, and it is often associated with mutual trust, support, and affection.\n\nFriendship can be categorized into different types, such as:\n\n1. Acquaintance: This is a superficial relationship where two people have a brief or occasional interaction, but they do not share a deep emotional connection.\n\n2. Casual friend: This type of friendship is characterized by a more relaxed and inform
+The division of Korea into North and South Korea can be traced back to the end of World War II in 1945. The Korean Peninsula was occupied by the United States and the Soviet Union, who were the main Allied powers in the region. The division was a result of political, economic, and social factors, as well as the ideological differences between the two superpowers.\n\n1. Political Factors:\n\nThe political landscape of Korea was heavily influenced by the Cold War, which was a period of ideological and political rivalry between the United States and the Soviet Union. The United States was a capitalist democracy, while the Soviet Union was a communist state. The division of
 ```
 
 #### Tips
