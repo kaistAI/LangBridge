@@ -67,7 +67,7 @@ metamath_template = (
     "### Instruction:\n{instruction}\n\n### Response:\n"
     )
 question = "문제: Jimmy는 Ethel이 가진 돈의 두배보다 2달러가 더 많습니다. Ethel이 8달러가 있다고하면, Jimmy는 얼마를 갖고 있나요?  정답: "
-prefix =  metamath_template.format(instruction=question)
+prefix = metamath_template.format(instruction=question)
 output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
 print(output)
 ```
@@ -91,7 +91,7 @@ system_message = "You are an AI assistant. You will be given a task. You must ge
 user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
 
 prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
-prefix =  prompt.format(system_message=system_message, user_message=user_message)
+prefix = prompt.format(system_message=system_message, user_message=user_message)
 output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
 print(output)
 ```
