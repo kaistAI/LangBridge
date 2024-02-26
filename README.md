@@ -88,7 +88,7 @@ lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
 model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
 
 system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
-user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?"
+user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
 
 prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
 prefix =  prompt.format(system_message=system_message, user_message=user_message)
