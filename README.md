@@ -50,6 +50,28 @@ pip install -e evaluation-harness
 
 ## Usage
 ### Quick usage example
+#### Orca2-LangBridge
+```python
+from transformers import AutoTokenizer
+from langbridge import LangBridgeModel
+
+# our pretrained langbridge models all leverage this encoder tokenizer
+enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
+lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
+model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
+
+system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
+user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
+
+prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
+prefix = prompt.format(system_message=system_message, user_message=user_message)
+output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
+print(output)
+```
+
+```
+The division of Korea into North and South Korea can be traced back to the end of World War II in 1945. The Korean Peninsula was occupied by the United States and the Soviet Union, who were the main Allied powers in the region. The division was a result of political, economic, and social factors, as well as the ideological differences between the two superpowers.\n\n1. Political Factors:\n\nThe political landscape of Korea was heavily influenced by the Cold War, which was a period of ideological and political rivalry between the United States and the Soviet Union. The United States was a capitalist democracy, while the Soviet Union was a communist state. The division of
+```
 #### MetaMath-LangBridge
 ```python
 from transformers import AutoTokenizer
@@ -76,28 +98,6 @@ If Ethel has 8 dollars, then Jimmy has 2 * 8 + 2 = 18 dollars.
 Therefore, Jimmy has 18 dollars.
 #### 18
 The answer is: 18
-```
-#### Orca2-LangBridge
-```python
-from transformers import AutoTokenizer
-from langbridge import LangBridgeModel
-
-# our pretrained langbridge models all leverage this encoder tokenizer
-enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
-lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
-model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
-
-system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
-user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
-
-prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
-prefix = prompt.format(system_message=system_message, user_message=user_message)
-output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
-print(output)
-```
-
-```
-The division of Korea into North and South Korea can be traced back to the end of World War II in 1945. The Korean Peninsula was occupied by the United States and the Soviet Union, who were the main Allied powers in the region. The division was a result of political, economic, and social factors, as well as the ideological differences between the two superpowers.\n\n1. Political Factors:\n\nThe political landscape of Korea was heavily influenced by the Cold War, which was a period of ideological and political rivalry between the United States and the Soviet Union. The United States was a capitalist democracy, while the Soviet Union was a communist state. The division of
 ```
 
 #### Tips
