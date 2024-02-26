@@ -50,6 +50,7 @@ pip install -e evaluation-harness
 
 ## Usage
 ### Quick usage example
+#### MetaMath-LangBridge
 ```python
 from transformers import AutoTokenizer
 from langbridge import LangBridgeModel
@@ -76,6 +77,30 @@ Therefore, Jimmy has 18 dollars.
 #### 18
 The answer is: 18
 ```
+#### Orca2-LangBridge
+```python
+from transformers import AutoTokenizer
+from langbridge import LangBridgeModel
+
+# our pretrained langbridge models all leverage this encoder tokenizer
+enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
+lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
+model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
+
+
+system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
+user_message = "объясни мне слово друг"
+
+prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
+prefix =  prompt.format(system_message=system_message, user_message=user_message)
+output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prefix=prefix)
+print(output)
+```
+
+```
+The word "friend" is a term used to describe a close, personal relationship between two or more individuals. It is derived from the Old English word "frēond," which means "friend" or "ally." The concept of friendship has been present in human societies throughout history, and it is often associated with mutual trust, support, and affection.\n\nFriendship can be categorized into different types, such as:\n\n1. Acquaintance: This is a superficial relationship where two people have a brief or occasional interaction, but they do not share a deep emotional connection.\n\n2. Casual friend: This type of friendship is characterized by a more relaxed and inform
+```
+
 #### Tips
 1. Set the prefixes as if you were prompting the original LMs. For example, for Orca 2-langbridge use the Orca 2 template. For pretrained models (Llama 2, Llemma, and Code Llama), you may need to use few-shot examples.
 2. The encoder tokenizer is simply an [mT5 tokenizer with whitespace tokens](https://github.com/kaistAI/LangBridge/blob/16a781b1048dcc0089c986fd4bd63ab75c6a7d13/python_scripts/train_langbridge.py#L331). The reason for the added whitespaces is explained in section D.1 of the paper.
