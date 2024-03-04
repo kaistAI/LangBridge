@@ -18,10 +18,10 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 
 
 ##  🤗Models
-### Llama 2
-- [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
-### Llemma
-- [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
+### Orca 2
+- [orca2-langbridge-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
+- [orca2-langbridge-15b](https://huggingface.co/kaist-ai/orca2-langbridge-15b)
+- [orca2-langbridge-20b](https://huggingface.co/kaist-ai/orca2-langbridge-20b)
 ### MetaMath
 - [metamath-langbridge-9b](https://huggingface.co/kaist-ai/metamath-langbridge-9b)
 - [metamath-langbridge-15b](https://huggingface.co/kaist-ai/metamath-langbridge-15b)
@@ -30,11 +30,11 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 - [codellama-langbridge-9b](https://huggingface.co/kaist-ai/codellama-langbridge-9b)
 - [codellama-langbridge-15b](https://huggingface.co/kaist-ai/codellama-langbridge-15b)
 - [codellama-langbridge-20b](https://huggingface.co/kaist-ai/codellama-langbridge-20b)
-### Orca 2
-- [orca2-langbridge-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
-- [orca2-langbridge-15b](https://huggingface.co/kaist-ai/orca2-langbridge-15b)
-- [orca2-langbridge-20b](https://huggingface.co/kaist-ai/orca2-langbridge-20b)
-
+### Llemma
+- [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
+### Llama 2
+- [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
+  
 ## Install
 ### Using the Models only
 ```
