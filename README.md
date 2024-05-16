@@ -1,5 +1,5 @@
 # LangBridge
-[ACL 2024 Main Conference] Repository for the paper "LangBridge: Multilingual Reasoning Without Multilingual Supervision".
+[ACL 2024 Main] Repository for the paper "LangBridge: Multilingual Reasoning Without Multilingual Supervision".
 
 ### Links
 - [Paper](https://arxiv.org/abs/2401.10695)
