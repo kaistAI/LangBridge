@@ -7,5 +7,5 @@ pandas
 pytorch-lightning
 sentencepiece
 torchinfo
-transformers
+transformers==4.37.2
 wandb
