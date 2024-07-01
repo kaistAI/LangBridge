@@ -432,12 +432,12 @@ class LangBridgeModel(PreTrainedModel):
         self,
         enc_tokenizer: PreTrainedTokenizer,
         lm_tokenizer: PreTrainedTokenizer,
-        prefix: str,
+        prompts: : List[str],
         max_length: int = 150,
         num_beams: int = 1,
         **kwargs
     ):
-        enc_input = enc_tokenizer(prefix, return_tensors='pt', padding=True)
+        enc_input = enc_tokenizer(prompts, return_tensors='pt', padding=True)
         enc_ids = enc_input['input_ids'].to(self.device)
         enc_mask = enc_input['attention_mask'].to(self.device)
 
@@ -460,6 +460,6 @@ class LangBridgeModel(PreTrainedModel):
             **kwargs
         )
 
-        captions = lm_tokenizer.batch_decode(
+        completions = lm_tokenizer.batch_decode(
             out_ids, skip_special_tokens=True)
-        return captions
+        return completions
