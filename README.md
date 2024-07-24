@@ -18,21 +18,21 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 
 
 ##  🤗Models
-### Orca 2
+### Orca 2 (Instruction-tuned)
 - [orca2-langbridge-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
 - [orca2-langbridge-15b](https://huggingface.co/kaist-ai/orca2-langbridge-15b)
 - [orca2-langbridge-20b](https://huggingface.co/kaist-ai/orca2-langbridge-20b)
-### MetaMath
+### MetaMath (Instruction-tuned)
 - [metamath-langbridge-9b](https://huggingface.co/kaist-ai/metamath-langbridge-9b)
 - [metamath-langbridge-15b](https://huggingface.co/kaist-ai/metamath-langbridge-15b)
 - [metamath-langbridge-20b](https://huggingface.co/kaist-ai/metamath-langbridge-20b)
-### Code Llama
+### Code Llama (Not Instruction-tuned)
 - [codellama-langbridge-9b](https://huggingface.co/kaist-ai/codellama-langbridge-9b)
 - [codellama-langbridge-15b](https://huggingface.co/kaist-ai/codellama-langbridge-15b)
 - [codellama-langbridge-20b](https://huggingface.co/kaist-ai/codellama-langbridge-20b)
-### Llemma
+### Llemma (Not Instruction-tuned)
 - [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
-### Llama 2
+### Llama 2 (Not Instruction-tuned, Not Recommended, Use for Research Only)
 - [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
   
 ## Install
