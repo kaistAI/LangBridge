@@ -8,6 +8,6 @@ python eval_langbridge.py \
   --tasks copa,xcopa_et,xcopa_ht,xcopa_it,xcopa_id,xcopa_qu,xcopa_sw,xcopa_zh,xcopa_ta,xcopa_th,xcopa_tr,xcopa_vi \
   --instruction_template orca \
   --batch_size 32 \
-  --output_path eval_outputs/xcopa/llemma-langbrige_9b \
+  --output_path eval_outputs/xcopa/orca2-langbrige_9b \
   --device cuda:0 \
   --no_cache \

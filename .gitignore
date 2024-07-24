@@ -1,4 +1,5 @@
 data/*
+test/*
 !data/humaneval
 !data/m-humaneval
 training/checkpoints

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from abc import ABC
-from typing import Any, Dict
+from typing import Any, Dict, List
 import contextlib
 import logging
 
@@ -433,8 +433,6 @@ class LangBridgeModel(PreTrainedModel):
         enc_tokenizer: PreTrainedTokenizer,
         lm_tokenizer: PreTrainedTokenizer,
         prompts: List[str],
-        max_length: int = 150,
-        num_beams: int = 1,
         **kwargs
     ):
         enc_input = enc_tokenizer(prompts, return_tensors='pt', padding=True)
@@ -450,16 +448,16 @@ class LangBridgeModel(PreTrainedModel):
             attention_mask=attention_mask,
             enc_ids=enc_ids,
             enc_mask=enc_mask,
-            num_beams=num_beams,
             early_stopping=True,
             use_cache=True,
             bos_token_id=lm_tokenizer.bos_token_id,
-            eos_token_id=lm_tokenizer.eos_token_id,
+            eos_token_id=32002,  # <|im_end|>
             pad_token_id=lm_tokenizer.eos_token_id,
-            max_length=max_length,
             **kwargs
         )
 
         completions = lm_tokenizer.batch_decode(
             out_ids, skip_special_tokens=True)
+        # TODO: don't know why batch_decode doesn't remove <|im_end|>, since it's in the special tokens
+        completions = [s.replace('<|im_end|>', '') for s in completions]
         return completions

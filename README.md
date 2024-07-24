@@ -59,13 +59,22 @@ from langbridge import LangBridgeModel
 enc_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/langbridge_encoder_tokenizer') 
 lm_tokenizer = AutoTokenizer.from_pretrained('kaist-ai/orca2-langbridge-9b')
 model = LangBridgeModel.from_pretrained('kaist-ai/orca2-langbridge-9b').to('cuda')
+orca_template = "<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
 
-system_message = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer."
-user_message = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
+# Use one of Orca's 16 system messages (Table 2) of https://arxiv.org/pdf/2306.02707
+system_message1 = "You are an AI assistant. You will be given a task. You must generate a detailed and long answer." 
+user_message1 = "한반도가 둘로 나뉘어진 이유가 뭐야?" # Why was the Korean Peninsula divided into two?
 
-orca_prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n<|im_start|>user\n{user_message}<|im_end|>\n<|im_start|>assistant"
-output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prompts=[orca_prompt], max_length=150)
-print(output)
+system_message2 = "You are a helpful assistant, who always provide explanation. Think like you are answering to a five year old."
+user_message2 = "GPT-3 ఎందుకు అంత ప్రభావవంతంగా ఉందో వివరించండి." # Explain why GPT-3 is so influential.
+
+
+prompt1 = orca_template.format(system_message=system_message1, user_message=user_message1)
+prompt2 = orca_template.format(system_message=system_message2, user_message=user_message2)
+
+output = model.generate_from_prefix(enc_tokenizer, lm_tokenizer, prompts=[prompt1, prompt2], max_length=300)
+print(output[0])
+print(output[1])
 ```
 
 ```
@@ -73,8 +82,20 @@ The division of Korea into North and South Korea can be traced back to the end o
 
 1. Political Factors:
 
-The political landscape of Korea was heavily influenced by the Cold War, which was a period of ideological and political rivalry between the United States and the Soviet Union. The United States was a capitalist democracy, while the Soviet Union was a communist state. The division of
+The political landscape of Korea was heavily influenced by the Cold War, which was a period of ideological and political rivalry between the United States and the Soviet Union. The United States was a capitalist democracy, while the Soviet Union was a communist state. The division of Korea was a direct result of the political rivalry between these two superpowers.
+
+2. Economic Factors:
+
+The Korean Peninsula was rich in natural resources, particularly coal, iron, and zinc. The United States and the Soviet Union sought to gain control over these resources to support their respective economies. The division of Korea allowed both superpowers to exploit these resources without having to share them with each other.
+
+3. Social Factors:
+
+The Korean people were deeply divided along political and social lines. The majority of the population in the north supported the communist ideology, while the majority in the south supported the capitalist ideology. The division of Korea was also influenced by (max length reached)
 ```
+```
+GPT-3 is a very powerful computer program that can understand and talk like a human. It's like a super smart friend who knows a lot about many things and can help you with your questions. It's so good because it has been trained on a lot of information, like a big library of books, and it can learn new things very quickly. This makes it very helpful for answering questions, writing stories, and even helping people with their work.
+```
+
 #### MetaMath-LangBridge
 ```python
 from transformers import AutoTokenizer
