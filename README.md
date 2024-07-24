@@ -32,7 +32,7 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 - [codellama-langbridge-20b](https://huggingface.co/kaist-ai/codellama-langbridge-20b)
 ### Llemma (Not Instruction-tuned)
 - [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
-### Llama 2 (Not Instruction-tuned, Not Recommended, Use for Research Only)
+### Llama 2 (Not Instruction-tuned, Not Recommended)
 - [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
   
 ## Install
