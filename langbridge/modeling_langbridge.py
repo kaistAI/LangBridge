@@ -432,7 +432,7 @@ class LangBridgeModel(PreTrainedModel):
         self,
         enc_tokenizer: PreTrainedTokenizer,
         lm_tokenizer: PreTrainedTokenizer,
-        prompts: : List[str],
+        prompts: List[str],
         max_length: int = 150,
         num_beams: int = 1,
         **kwargs
