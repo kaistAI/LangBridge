@@ -4,6 +4,7 @@
 ### Links
 - [Paper](https://aclanthology.org/2024.acl-long.405/)
 - [Tweet (brief overview of the paper)](https://twitter.com/dongkeun_yoon/status/1749780849741160775)
+- [Presentation (10 minutes)](https://www.youtube.com/watch?v=04sxUI6sBUQ)
 
 # TL;DR
 🤔LMs good at reasoning are mostly English-centric (MetaMath, Orca 2, etc).
