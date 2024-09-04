@@ -69,7 +69,7 @@ def main():
     print('instruction_template:', args.instruction_template)
 
     model = LangBridgeModel.from_pretrained(
-        args.checkpoint_path, torch_dtype=torch.bfloat16)
+        args.checkpoint_path, torch_dtype=torch.bfloat16)  # please either use bf16 or fp32 as mT5 does not like fp16
     model.to(args.device)
 
     try:
