@@ -2,8 +2,9 @@
 [ACL 2024 Main] Repository for the paper "LangBridge: Multilingual Reasoning Without Multilingual Supervision".
 
 ### Links
-- [Paper](https://arxiv.org/abs/2401.10695)
+- [Paper](https://aclanthology.org/2024.acl-long.405/)
 - [Tweet (brief overview of the paper)](https://twitter.com/dongkeun_yoon/status/1749780849741160775)
+- [Presentation (10 minutes)](https://www.youtube.com/watch?v=04sxUI6sBUQ)
 
 # TL;DR
 🤔LMs good at reasoning are mostly English-centric (MetaMath, Orca 2, etc).
@@ -18,21 +19,21 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 
 
 ##  🤗Models
-### Orca 2
+### Orca 2 (Instruction-tuned)
 - [orca2-langbridge-9b](https://huggingface.co/kaist-ai/orca2-langbridge-9b)
 - [orca2-langbridge-15b](https://huggingface.co/kaist-ai/orca2-langbridge-15b)
 - [orca2-langbridge-20b](https://huggingface.co/kaist-ai/orca2-langbridge-20b)
-### MetaMath
+### MetaMath (Instruction-tuned)
 - [metamath-langbridge-9b](https://huggingface.co/kaist-ai/metamath-langbridge-9b)
 - [metamath-langbridge-15b](https://huggingface.co/kaist-ai/metamath-langbridge-15b)
 - [metamath-langbridge-20b](https://huggingface.co/kaist-ai/metamath-langbridge-20b)
-### Code Llama
+### Code Llama (Not Instruction-tuned)
 - [codellama-langbridge-9b](https://huggingface.co/kaist-ai/codellama-langbridge-9b)
 - [codellama-langbridge-15b](https://huggingface.co/kaist-ai/codellama-langbridge-15b)
 - [codellama-langbridge-20b](https://huggingface.co/kaist-ai/codellama-langbridge-20b)
-### Llemma
+### Llemma (Not Instruction-tuned)
 - [llemma-langbridge-9b](https://huggingface.co/kaist-ai/llemma-langbrige-9b)
-### Llama 2
+### Llama 2 (Not Instruction-tuned, Not Recommended)
 - [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
   
 ## Install
