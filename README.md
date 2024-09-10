@@ -37,6 +37,14 @@ LangBridge “bridges” mT5 encoder and the target LM together while utilizing 
 - [llama2-langbridge-9b](https://huggingface.co/kaist-ai/llama2-langbridge-9b)
   
 ## Install
+### Install dependencies
+**You must use the correct Transformers version (4.37.2) or the performance will be degraded! Please see https://github.com/kaistAI/LangBridge/issues/11**
+```
+pip install -r requirements.txt
+```
+
+
+
 ### Using the Models only
 ```
 pip install -e .
