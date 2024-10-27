@@ -156,3 +156,29 @@ bash scripts/eval/mgsm/metamath-lb-9b.sh
 
 ## Limitation
 LangBridge mostly helps for low-resource languages. If the language model is already proficient in a certain language, LangBridge may lower performance in that language. Please refer to the paper for the detailed evaluation results.
+
+## Ciation
+```
+@inproceedings{yoon-etal-2024-langbridge,
+    title = "{L}ang{B}ridge: Multilingual Reasoning Without Multilingual Supervision",
+    author = "Yoon, Dongkeun  and
+      Jang, Joel  and
+      Kim, Sungdong  and
+      Kim, Seungone  and
+      Shafayat, Sheikh  and
+      Seo, Minjoon",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.acl-long.405",
+    doi = "10.18653/v1/2024.acl-long.405",
+    pages = "7502--7522",
+    abstract = "We introduce LangBridge, a $\textit{zero-shot}$ approach to adapt language models for multilingual reasoning tasks without multilingual supervision. LangBridge operates by bridging two models, each specialized in different aspects: (1) one specialized in understanding multiple languages (e.g., mT5 encoder) and (2) one specialized in reasoning (e.g., MetaMath). LangBridge connects the two models by introducing minimal trainable parameters between them. Despite utilizing only English data for training, LangBridge considerably enhances the performance of language models on low-resource languages across mathematical reasoning, code completion, logical reasoning, and commonsense reasoning. Our analysis suggests that the efficacy of LangBridge stems from the language-agnostic characteristics of multilingual representations. We publicly release our code and models.",
+}
+```
+
