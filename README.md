@@ -157,7 +157,7 @@ bash scripts/eval/mgsm/metamath-lb-9b.sh
 ## Limitation
 LangBridge mostly helps for low-resource languages. If the language model is already proficient in a certain language, LangBridge may lower performance in that language. Please refer to the paper for the detailed evaluation results.
 
-## Ciation
+## Citation
 ```
 @inproceedings{yoon-etal-2024-langbridge,
     title = "{L}ang{B}ridge: Multilingual Reasoning Without Multilingual Supervision",
